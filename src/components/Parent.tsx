@@ -11,15 +11,16 @@ export const Parent = defineComponent({
     },
     height: {
       type: Number,
-    }
+    },
   },
   setup(props) {
-    const { age, ...reset} = toRefs(props)
+    const { age, ...reset } = props;
 
     return () => (
-      <Child {...reset}>
-        <div>{age.value}</div>
-      </Child>
-    )
-  }
-})
+      <div>
+        <div>{props.age}</div>
+        <Child {...props}></Child>
+      </div>
+    );
+  },
+});
